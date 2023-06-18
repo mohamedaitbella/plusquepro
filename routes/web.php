@@ -1,5 +1,6 @@
 <?php
 
+// use App\Http\Controllers\FilmController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('films' ,function () {
+        return view('films');
+    })->name('films');
 });
+
+
