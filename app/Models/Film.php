@@ -9,7 +9,7 @@ class Film extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'adult', 'backdrop_path', 'original_language', 'original_title', 'overview', 'poster_path', 'media_type', 'popularity', 'release_date', 'video', 'vote_average', 'vote_count'];
+    protected $fillable = ['title', 'adult', 'backdrop_path', 'original_language', 'original_title', 'overview', 'poster_path', 'media_type', 'popularity', 'release_date', 'video', 'vote_average', 'vote_count','film_id'];
 
     public function genres()
 {

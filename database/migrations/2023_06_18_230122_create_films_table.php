@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->id();
             $table->boolean('adult')->default(false);
+            $table->integer('film_id')->nullable();
             $table->string('backdrop_path')->nullable();
             $table->string('title')->nullable();
             $table->string('original_language')->nullable();
