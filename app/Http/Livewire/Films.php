@@ -14,6 +14,9 @@ class Films extends Component
     use WithPagination;
 
     public $q;
+    public $confirmingFilmDeletion = false;
+
+    protected $queryString = ['q' =>['except' =>'']];
     public function render()
     {   
         $films = Film::with('genres')
@@ -29,4 +32,14 @@ class Films extends Component
     function updatingQ() {
         $this->resetPage();
     }
+
+    function confirmFilmDeletion($id){
+       $this->confirmingFilmDeletion = $id ;
+    }
+    
+    function deleteFilm(Film $film) {
+        $film->delete();
+        $this->confirmingFilmDeletion = false ;
+    }
+
 }

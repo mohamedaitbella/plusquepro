@@ -46,7 +46,9 @@
                     {{$film->release_date}}
                 </td>
                 <td class="px-6 py-4">
-                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Voire</button>
+                    <x-danger-button wire:click="confirmFilmDeletion({{$film->id}})" wire:loading.attr="disabled">
+                        {{ __('Delete') }}
+                    </x-danger-button>
                 </td>
             </tr>
            @endforeach
@@ -56,5 +58,24 @@
         {{ $films->links() }}
     </div>
 </div>
+<x-dialog-modal wire:model="confirmingFilmDeletion">
+    <x-slot name="title">
+        {{ __('Delete') }}
+    </x-slot>
+
+    <x-slot name="content"> 
+        {{ __('Are you sure you want to delete.') }}
+    </x-slot>
+
+    <x-slot name="footer">
+        <x-secondary-button wire:click="$set('confirmingFilmDeletion',false)" wire:loading.attr="disabled">
+            {{ __('Cancel') }} 
+        </x-secondary-button>
+
+        <x-danger-button wire:click="deleteFilm({{$confirmingFilmDeletion}})" wire:loading.attr="disabled">
+             {{ __('Delete') }}
+        </x-danger-button>
+    </x-slot>
+</x-dialog-modal>
 
 </div>
